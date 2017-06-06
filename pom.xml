@@ -1,0 +1,106 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.test.soap</groupId>
+    <artifactId>soap-proj</artifactId>
+    <version>1</version>
+
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework.ws/spring-ws-core -->
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+            <version>2.4.0.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.3.8.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.xmlbeans/xmlbeans -->
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/wsdl4j/wsdl4j -->
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <id>schemagen</id>
+                        <goals>
+                            <goal>schemagen</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <sources>
+                                <source>src/main/java/com/soap/domain</source>
+                            </sources>
+                            <outputDirectory>src/main/resources/xsd</outputDirectory>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <sources>
+                                <source>src/main/resources/xsd/schema1.xsd</source>
+                            </sources>
+                            <outputDirectory>src/main/java</outputDirectory>
+                            <clearOutputDir>false</clearOutputDir>
+                            <generateEpisode>false</generateEpisode>
+                        </configuration>
+                    </execution>
+                </executions>
+
+            </plugin>
+        </plugins>
+    </build>
+</project>
