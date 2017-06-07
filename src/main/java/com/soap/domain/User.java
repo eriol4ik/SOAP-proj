@@ -6,9 +6,9 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
         name = "user",
-        propOrder = {"id", "username", "password", "events"}
+        propOrder = {"id", "username", "events"},
+        namespace = "http://soap.com/service"
 )
-@XmlRootElement(name = "user")
 public class User {
     @XmlElement(required = true)
     private Long id;
@@ -16,14 +16,7 @@ public class User {
     @XmlElement(required = true)
     private String username;
 
-    @XmlElement(required = true)
-    private String password;
-
-    @XmlElement
     private List<Event> events;
-
-    public User() {
-    }
 
     public Long getId() {
         return this.id;
@@ -39,14 +32,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public List<Event> getEvents() {

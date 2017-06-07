@@ -6,49 +6,28 @@
 
     <packaging>jar</packaging>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.2.RELEASE</version>
+    </parent>
+
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework.ws/spring-ws-core -->
+        <!-- tag::springws[] -->
         <dependency>
-            <groupId>org.springframework.ws</groupId>
-            <artifactId>spring-ws-core</artifactId>
-            <version>2.4.0.RELEASE</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web-services</artifactId>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>4.3.8.RELEASE</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.xmlbeans/xmlbeans -->
-        <dependency>
-            <groupId>org.apache.xmlbeans</groupId>
-            <artifactId>xmlbeans</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/wsdl4j/wsdl4j -->
         <dependency>
             <groupId>wsdl4j</groupId>
             <artifactId>wsdl4j</artifactId>
-            <version>1.6.2</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+        <!-- end::springws[] -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.2</version>
-        </dependency>
-
     </dependencies>
     <build>
         <pluginManagement>
@@ -65,6 +44,11 @@
         </pluginManagement>
         <plugins>
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
                 <version>2.2</version>
@@ -78,12 +62,13 @@
                         <configuration>
                             <sources>
                                 <source>src/main/java/com/soap/domain</source>
+                                <source>src/main/java/com/soap/service</source>
                             </sources>
                             <outputDirectory>src/main/resources/xsd</outputDirectory>
                         </configuration>
                     </execution>
 
-                    <execution>
+                    <!--<execution>
                         <id>xjc</id>
                         <goals>
                             <goal>xjc</goal>
@@ -91,13 +76,13 @@
                         <phase>process-resources</phase>
                         <configuration>
                             <sources>
-                                <source>src/main/resources/xsd/schema1.xsd</source>
+                                <source>src/main/resources/xsd/service/</source>
                             </sources>
                             <outputDirectory>src/main/java</outputDirectory>
                             <clearOutputDir>false</clearOutputDir>
                             <generateEpisode>false</generateEpisode>
                         </configuration>
-                    </execution>
+                    </execution>-->
                 </executions>
 
             </plugin>

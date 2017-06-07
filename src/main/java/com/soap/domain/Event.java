@@ -2,17 +2,16 @@ package com.soap.domain;
 
 import com.soap.adapter.DateAdapter;
 
-import java.sql.Date;
-import java.util.List;
+import java.util.Date;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
         name = "event",
-        propOrder = {"id", "title", "description", "date", "users"}
+        propOrder = {"id", "title", "description", "date"},
+        namespace = "http://soap.com/service"
 )
-@XmlRootElement(name = "event")
 public class Event {
     @XmlElement(required = true)
     private Long id;
@@ -26,12 +25,6 @@ public class Event {
     @XmlElement(required = true)
     @XmlJavaTypeAdapter(DateAdapter.class)
     private Date date;
-
-    @XmlElement
-    private List<User> users;
-
-    public Event() {
-    }
 
     public Long getId() {
         return this.id;
@@ -63,13 +56,5 @@ public class Event {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public List<User> getUsers() {
-        return this.users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
     }
 }
