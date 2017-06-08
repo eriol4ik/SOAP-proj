@@ -1,8 +1,8 @@
-package com.soap.dao.impl;
+package com.soap.server.dao.impl;
 
-import com.soap.dao.UserDao;
-import com.soap.domain.Event;
-import com.soap.domain.User;
+import com.soap.server.dao.UserDao;
+import com.soap.server.domain.Event;
+import com.soap.server.domain.User;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -54,5 +54,12 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User getById(Long id) {
         return users.get(id);
+    }
+
+    @Override
+    public Long create(User user) {
+        users.put(user.getId(), user);
+
+        return user.getId();
     }
 }

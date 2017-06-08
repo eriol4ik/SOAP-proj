@@ -1,10 +1,11 @@
-package com.soap.endpoint;
+package com.soap.server.endpoint;
 
-import com.soap.dao.EventDao;
-import com.soap.service.event.CreateEventRequest;
-import com.soap.service.event.CreateEventResponse;
-import com.soap.service.event.GetByIdEventResponse;
-import com.soap.service.event.GetByIdEventRequest;
+import com.soap.server.dao.EventDao;
+import com.soap.server.service.EventService;
+import com.soap.server.webservice.event.CreateEventRequest;
+import com.soap.server.webservice.event.CreateEventResponse;
+import com.soap.server.webservice.event.GetByIdEventResponse;
+import com.soap.server.webservice.event.GetByIdEventRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -16,13 +17,13 @@ public class EventEndpoint {
     private static final String NAMESPACE_URI = "http://soap.com/service";
 
     @Autowired
-    private EventDao eventDao;
+    private EventService eventService;
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getByIdEventRequest")
     @ResponsePayload
     public GetByIdEventResponse getById(@RequestPayload GetByIdEventRequest request) {
         GetByIdEventResponse response = new GetByIdEventResponse();
-        response.setEvent(eventDao.getById(request.getId()));
+        response.setEvent(eventService.getById(request.getId()));
 
         return response;
     }
@@ -31,7 +32,7 @@ public class EventEndpoint {
     @ResponsePayload
     public CreateEventResponse create(@RequestPayload CreateEventRequest request) {
         CreateEventResponse response = new CreateEventResponse();
-        response.setId(eventDao.create(request.getEvent()));
+        response.setId(eventService.create(request.getEvent()));
 
         return response;
     }

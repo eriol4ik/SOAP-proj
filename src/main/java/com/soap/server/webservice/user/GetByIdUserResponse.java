@@ -1,6 +1,6 @@
-package com.soap.service.user;
+package com.soap.server.webservice.user;
 
-import com.soap.domain.User;
+import com.soap.server.domain.User;
 
 import javax.xml.bind.annotation.*;
 
@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.*;
 @XmlType(name = "")
 @XmlRootElement(name = "getByIdUserResponse", namespace = "http://soap.com/service")
 public class GetByIdUserResponse {
-    @XmlElement(required = true)
     private User user;
 
     public User getUser() {

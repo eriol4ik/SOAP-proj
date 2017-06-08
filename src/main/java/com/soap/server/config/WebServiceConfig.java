@@ -1,4 +1,4 @@
-package com.soap.config;
+package com.soap.server.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;

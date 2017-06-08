@@ -1,6 +1,6 @@
-package com.soap.service.event;
+package com.soap.server.webservice.event;
 
-import com.soap.domain.Event;
+import com.soap.server.domain.Event;
 
 import javax.xml.bind.annotation.*;
 
@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.*;
 @XmlType(name = "")
 @XmlRootElement(name = "getByIdEventResponse", namespace = "http://soap.com/service")
 public class GetByIdEventResponse {
-    @XmlElement(required = true)
     private Event event;
 
     public Event getEvent() {

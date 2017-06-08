@@ -61,8 +61,8 @@
                         <phase>generate-resources</phase>
                         <configuration>
                             <sources>
-                                <source>src/main/java/com/soap/domain</source>
-                                <source>src/main/java/com/soap/service</source>
+                                <source>src/main/java/com/soap/server/domain</source>
+                                <source>src/main/java/com/soap/server/service</source>
                             </sources>
                             <outputDirectory>src/main/resources/xsd</outputDirectory>
                         </configuration>

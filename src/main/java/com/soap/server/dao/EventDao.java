@@ -1,6 +1,6 @@
-package com.soap.dao;
+package com.soap.server.dao;
 
-import com.soap.domain.Event;
+import com.soap.server.domain.Event;
 
 public interface EventDao {
     Event getById(Long id);

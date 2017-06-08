@@ -1,8 +1,10 @@
-package com.soap.endpoint;
+package com.soap.server.endpoint;
 
-import com.soap.dao.UserDao;
-import com.soap.service.user.GetByIdUserRequest;
-import com.soap.service.user.GetByIdUserResponse;
+import com.soap.server.service.UserService;
+import com.soap.server.webservice.user.CreateUserRequest;
+import com.soap.server.webservice.user.CreateUserResponse;
+import com.soap.server.webservice.user.GetByIdUserRequest;
+import com.soap.server.webservice.user.GetByIdUserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -14,13 +16,22 @@ public class UserEndpoint {
     private static final String NAMESPACE_URI = "http://soap.com/service";
 
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getByIdUserRequest")
     @ResponsePayload
     public GetByIdUserResponse getById(@RequestPayload GetByIdUserRequest request) {
         GetByIdUserResponse response = new GetByIdUserResponse();
-        response.setUser(userDao.getById(request.getId()));
+        response.setUser(userService.getById(request.getId()));
+
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "createUserRequest")
+    @ResponsePayload
+    public CreateUserResponse createUser(@RequestPayload CreateUserRequest request) {
+        CreateUserResponse response = new CreateUserResponse();
+        response.setId(userService.create(request.getUser()));
 
         return response;
     }

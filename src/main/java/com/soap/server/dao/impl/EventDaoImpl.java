@@ -1,7 +1,7 @@
-package com.soap.dao.impl;
+package com.soap.server.dao.impl;
 
-import com.soap.dao.EventDao;
-import com.soap.domain.Event;
+import com.soap.server.dao.EventDao;
+import com.soap.server.domain.Event;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

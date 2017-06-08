@@ -1,6 +1,6 @@
-package com.soap.service.event;
+package com.soap.server.webservice.event;
 
-import com.soap.domain.Event;
+import com.soap.server.domain.Event;
 
 import javax.xml.bind.annotation.*;
 

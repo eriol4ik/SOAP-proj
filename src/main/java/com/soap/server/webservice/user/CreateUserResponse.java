@@ -1,12 +1,13 @@
-package com.soap.service.event;
+package com.soap.server.webservice.user;
+
+import org.springframework.beans.BeanUtils;
 
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "createEventResponse", namespace = "http://soap.com/service")
-public class CreateEventResponse {
-    @XmlElement(required = true)
+@XmlRootElement(name = "createUserResponse", namespace = "http://soap.com/service")
+public class CreateUserResponse {
     private Long id;
 
     public Long getId() {

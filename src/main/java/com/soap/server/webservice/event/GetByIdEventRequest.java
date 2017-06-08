@@ -1,11 +1,11 @@
-package com.soap.service.user;
+package com.soap.server.webservice.event;
 
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "getByIdUserRequest", namespace = "http://soap.com/service")
-public class GetByIdUserRequest {
+@XmlRootElement(name = "getByIdEventRequest", namespace = "http://soap.com/service")
+public class GetByIdEventRequest {
     @XmlElement(required = true)
     private Long id;
 
